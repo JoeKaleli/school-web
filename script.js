@@ -1,35 +1,27 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const searchInput = document.getElementById('searchInput');
-    const studentInfo = document.getElementById('studentInfo');
-    let studentsData;
-  
+document.addEventListener('DOMContentLoaded', function() {
+    const studentList = document.getElementById('student-list');
+    const studentDetails = document.getElementById('student-details');
+
     // Fetch student data from db.json
-    fetch('db.json')
-      .then(response => response.json())
-      .then(data => {
-        studentsData = data;
-      })
-      .catch(error => console.error('Error fetching student data:', error));
-  
-    // Function to display student info
-    function displayStudentInfo(student) {
-      studentInfo.innerHTML = `
-        <h2>${student.name}</h2>
-        <p>Age: ${student.age}</p>
-        <p>Grade: ${student.grade}</p>
-      `;
+    fetch('students.json')
+        .then(response => response.json())
+        .then(data => {
+            data.students.forEach(student => {
+                const li = document.createElement('li');
+                li.textContent = student.name;
+                li.addEventListener('click', function() {
+                    displayStudentDetails(student);
+                });
+                studentList.appendChild(li);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+
+    function displayStudentDetails(student) {
+        studentDetails.innerHTML = `
+            <p><strong>Name:</strong> ${student.name}</p>
+            <p><strong>Age:</strong> ${student.age}</p>
+            <p><strong>Grade:</strong> ${student.grade}</p>
+        `;
     }
-  
-    // Event listener for search input
-    searchInput.addEventListener('input', function () {
-      const searchValue = searchInput.value.trim().toLowerCase();
-      const student = studentsData.find(student => student.name.toLowerCase().includes(searchValue));
-  
-      if (student) {
-        displayStudentInfo(student);
-      } else {
-        studentInfo.innerHTML = 'Student not found';
-      }
-    });
-  });
-  
+});

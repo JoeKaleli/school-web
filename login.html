@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Data</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./login.css">
 </head>
 <body>
-  <div class="container">
-    <input type="text" id="searchInput" placeholder="Search by student name">
-    <div id="studentInfo"></div>
-  </div>
-  <script src="script.js"></script>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button id="search-button">Search</button>
+        </div>
+        <div class="student-details">
+            <h2>Student Details</h2>
+            <div id="student-details"></div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
 </body>
 </html>
 
