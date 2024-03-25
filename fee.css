@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    font-weight:700;
+    align-items: center;
+    background-color: bisque;
+}
+h1 {
+    font-weight: 700;
+    color: black;
+}
+
+.table {
+    width: 900px;
+    height: 600px;
+    padding: 0px 0px 0px 0px;
+}
+.table .tbody tr td {
+    padding: 0px 0px 0px 30px;
+    font-weight: 600;
+    color: rgb(8, 5, 6);
+}
